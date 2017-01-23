@@ -23,6 +23,7 @@
 #include <limits>
 #include <string>
 #include <cassert>
+#include <climits>
  
 using namespace std;
 typedef long long LL;
@@ -105,43 +106,51 @@ ll gcd(ll a,ll b)
  
 int main()
 {
+
 	int t;
-	gi(t);
+	cin>>t;
+	string s,blank;	
+	int i=1;
 	while(t--)
-	{
-		cin.clear();
-		string s;
+	{	
+
+		if(i)
+		{	getline(cin,blank);
+			i =0;
+		}
+		getline(cin,blank);
+		
 		getline(cin,s);
-		cin.clear();
-		cout<<s<<endl;
-		getline(cin,s);
+		//cout<<s<<endl;
 		istringstream iss(s);
 		vector<int> v;
-		cout<<s<<endl;
 		int n;
 		while(iss>>n)
 		{
 			v.pb(n);			
 		}
-		//cout<<v.size()<<endl;
-		cin.clear();
+
+
 		getline(cin,s);
+		//cout<<s<<endl;
 		istringstream iss2(s);
-		vector<double> v_d;
-		double d;
+		vector<string> v_d;
+		string d;
 		while(iss2>>d)
 		{
 			v_d.pb(d);			
 		}	
-		double ans[v_d.size()];
+		string ans[v_d.size()];
 		rep(i,v.size())
 		{
 			ans[v[i]-1] = v_d[i];
 		}
 		rep(i,v_d.size())
 			cout<<ans[i]<<endl;
-		cout<<endl;
-	}	
+		if(t!=0)
+			cout<<endl;
+			
+	}
 }
 
 
