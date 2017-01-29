@@ -106,51 +106,40 @@ ll gcd(ll a,ll b)
  
 int main()
 {
-
 	int t;
-	cin>>t;
-	string s,blank;	
-	int i=1;
+	gi(t);
 	while(t--)
-	{	
-
-		if(i)
-		{	getline(cin,blank);
-			i =0;
-		}
-		getline(cin,blank);
-		
-		getline(cin,s);
-		//cout<<s<<endl;
-		istringstream iss(s);
-		vector<int> v;
+	{
 		int n;
-		while(iss>>n)
+		gi(n);
+		ll arr[500];  
+		rep(i,500)
+			arr[i]=0ll;
+		rep(i,n)
 		{
-			v.pb(n);			
+			char x;
+			int 	y;
+			cin>>x>>y;
+			arr[x+250]=y;  // remember characters may be negative integer form
 		}
-
-
-		getline(cin,s);
-		//cout<<s<<endl;
-		istringstream iss2(s);
-		vector<string> v_d;
-		string d;
-		while(iss2>>d)
+		int k;
+		gi(k);
+		ll ans=0ll;
+		cin.ignore();
+		string s;
+		rep(i,k)
 		{
-			v_d.pb(d);			
+			getline(cin,s);
+			rep(j,s.size())
+			{
+				ans+=(ll)arr[s[j]+250];
+			}
 		}	
-		string ans[v_d.size()];
-		rep(i,v.size())
-		{
-			ans[v[i]-1] = v_d[i];
-		}
-		rep(i,v_d.size())
-			cout<<ans[i]<<endl;
-		if(t!=0)
-			cout<<endl;
-			
+		double xx = ans/100.0;
+		printf("%.2lf$\n",xx);
 	}
+	
+
 }
 
 

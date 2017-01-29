@@ -1,4 +1,6 @@
-
+/* user :WARLORD	
+    platform :ID CODES
+*/
  
 #include <vector>
 #include <list>
@@ -22,8 +24,8 @@
 #include <ctime>
 #include <limits>
 #include <string>
+#include <unordered_map>
 #include <cassert>
-#include <climits>
  
 using namespace std;
 typedef long long LL;
@@ -57,8 +59,8 @@ typedef pair<int,int> pii;
 #define ll long long
 #define pb push_back
 #define MOD 1000000007
-#define limit 10000005
-
+#define limit 100005
+ 
 int readint()
     {
        int cc = getc(stdin);
@@ -71,8 +73,8 @@ int readint()
        }
       return ret;
    }
-
-
+ 
+ 
 unsigned long long mod_pow(unsigned long long num, unsigned long long pow, unsigned long long mod)
 {
     unsigned long long test;
@@ -85,14 +87,7 @@ unsigned long long mod_pow(unsigned long long num, unsigned long long pow, unsig
     }
     return test; /* note this is potentially lossy */
 }
-
-int comp2(string a,string b)
-{
-	while (a.size() < b.size()) a = "0" + a;
-    while (b.size() < a.size()) b = "0" + b;
-	return a>b;
-	
-}
+ 
 ll gcd(ll a,ll b)
 {	ll r;
 	while(b)
@@ -102,55 +97,45 @@ ll gcd(ll a,ll b)
 	}
 	return a;
 }
-
- 
-int main()
+void printspace(int x)
 {
-
-	int t;
-	cin>>t;
-	string s,blank;	
-	int i=1;
-	while(t--)
-	{	
-
-		if(i)
-		{	getline(cin,blank);
-			i =0;
-		}
-		getline(cin,blank);
-		
-		getline(cin,s);
-		//cout<<s<<endl;
-		istringstream iss(s);
-		vector<int> v;
-		int n;
-		while(iss>>n)
-		{
-			v.pb(n);			
-		}
-
-
-		getline(cin,s);
-		//cout<<s<<endl;
-		istringstream iss2(s);
-		vector<string> v_d;
-		string d;
-		while(iss2>>d)
-		{
-			v_d.pb(d);			
-		}	
-		string ans[v_d.size()];
-		rep(i,v.size())
-		{
-			ans[v[i]-1] = v_d[i];
-		}
-		rep(i,v_d.size())
-			cout<<ans[i]<<endl;
-		if(t!=0)
-			cout<<endl;
-			
-	}
+	rep(i,x)
+		printf(" ");
 }
 
+void printschar(int x,char c)
+{
+	rep(i,x)
+		printf("%c",c);
+}
+
+int main()
+{	
+
+	while(true)
+	{
+		string s;
+		cin>>s;
+		vector<char > v;
+		if(s[0]=='#')
+			break;
+		int flag =0;;
+		rep(i,s.size()-1)
+		{	
+			if(s[i]<s[i+1])
+			{ flag =1;
+				break;
+			}
+		}
+		if(flag)
+		{
+			next_permutation(s.begin(),s.end());
+		}
+		else
+			s = "No Successor";
+		cout<<s<<endl;
+
+	}
+
+}
 
